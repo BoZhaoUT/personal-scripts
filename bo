@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # quick git commit
-if [ $1 == "commit" ]
-then
+if [ $1 == "commit" ] || [ $1 == "co" ]; then
   git add . && git commit -m "update"
+
+# delete unused local branches
+elif [ $1 == "delete-branch" ]; then
+  git branch | egrep -v "(master|\*)" | xargs git branch -D
+
+# kill a running process at port
+elif [ $1 == "kill-port" ]; then
+  kill $(lsof -ti:$2)
+
 else
-  echo "N/A"
+  echo "unkonwn command"
 fi
