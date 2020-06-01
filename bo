@@ -4,6 +4,9 @@
 if [ $1 == "commit" ] || [ $1 == "co" ]; then
   git add . && git commit -m "update"
 
+elif [ $1 == "push" ]; then
+  git push -u origin `git rev-parse --abbrev-ref HEAD`
+
 # delete unused local branches
 elif [ $1 == "delete-branch" ]; then
   git branch | egrep -v "(master|\*)" | xargs git branch -D
@@ -11,6 +14,8 @@ elif [ $1 == "delete-branch" ]; then
 # kill a running process at port
 elif [ $1 == "kill-port" ]; then
   kill $(lsof -ti:$2)
+
+
 
 else
   echo "unkonwn command"
