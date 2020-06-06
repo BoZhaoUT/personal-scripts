@@ -7,6 +7,9 @@ if [ $1 == "commit" ] || [ $1 == "co" ]; then
 elif [ $1 == "push" ]; then
   git push -u origin `git rev-parse --abbrev-ref HEAD`
 
+elif [ $1 == "log" ]; then
+  git log --oneline --decorate=no
+
 # delete unused local branches
 elif [ $1 == "delete-branch" ]; then
   git branch | egrep -v "(master|\*)" | xargs git branch -D
