@@ -7,6 +7,10 @@ if [ $1 == "commit" ] || [ $1 == "co" ]; then
 elif [ $1 == "push" ]; then
   git push -u origin `git rev-parse --abbrev-ref HEAD`
 
+# git add commit push
+elif [ $1 == "acp" ]; then
+  bo co && git push
+
 elif [ $1 == "log" ]; then
   git log --oneline --decorate=no
 
