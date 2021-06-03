@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# quick git status
+if [ $1 == "s" ]; then
+  git status
+
 # quick git commit
-if [ $1 == "commit" ] || [ $1 == "co" ]; then
+elif [ $1 == "commit" ] || [ $1 == "co" ]; then
   git add . && git commit -m "update"
 
 elif [ $1 == "push" ]; then
